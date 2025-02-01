@@ -154,11 +154,12 @@ class Player {
         if ((Date.now() - this.lastShot < this.shootingCooldown) || this.weapon == "none") return;
         this.bullets.push(new Bullet({
             position: {
-                x: this.position.x + (5 * Math.cos(this.angle)),
-                y: this.position.y + (5 * Math.sin(this.angle))
+                x: (this.position.x - this.width / 8) + (10 * Math.cos(this.angle - 5)),
+                y: (this.position.y - this.height / 8) + (10 * Math.sin(this.angle - 5))
             },
             angle: this.angle
         }));
+        console.log(this.angle);
         this.lastShot = Date.now();
     }
     

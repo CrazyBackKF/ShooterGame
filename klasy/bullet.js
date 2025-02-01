@@ -11,7 +11,7 @@ class Bullet {
     update()
     {
         this.draw();
-        //this.move();
+        this.move();
     }
     
     draw()

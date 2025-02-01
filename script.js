@@ -9,8 +9,6 @@ function animate()
     ctx.fillStyle = "white";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-
-    player.update();
     for (let i = 0; i < player.bullets.length; i++)
     {
         player.bullets[i].update();
@@ -19,6 +17,8 @@ function animate()
             player.bullets.splice(i, 1);
         }
     }
+
+    player.update();
 
     requestAnimationFrame(animate);
 }   
