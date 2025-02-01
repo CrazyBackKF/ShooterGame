@@ -7,6 +7,7 @@ class Player {
         }
         this.width = 43;
         this.height = 43;
+        this.radius = 22.5;
         this.key = {
             w: false,
             a: false,
@@ -32,6 +33,7 @@ class Player {
         this.lastShot = 0;
         this.shootingCooldown = 300;
         this.isHolding = false;
+        this.damage = 20;
     }
 
     update()
@@ -144,7 +146,7 @@ class Player {
                 break;
             case "AR":
                 this.image.src = "img/player_machine.png"
-                this.shootingCooldown = 60;
+                this.shootingCooldown = 100;
                 break;
         }
     }
@@ -159,7 +161,6 @@ class Player {
             },
             angle: this.angle
         }));
-        console.log(this.angle);
         this.lastShot = Date.now();
     }
     

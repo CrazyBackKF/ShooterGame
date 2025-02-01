@@ -2,7 +2,10 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d')
 
 const player = new Player();
+const enemiesArray = [];
 let interval;
+
+enemiesArray.push(new Enemy());
 
 function animate()
 {
@@ -19,6 +22,22 @@ function animate()
     }
 
     player.update();
+    for (let i = 0; i < enemiesArray.length; i++)
+    {
+        enemiesArray[i].update();
+        if(enemiesArray[i].health <= 0)
+        {
+            enemiesArray.splice(i, 1);
+        }
+        for (let j = 0; j < player.bullets.length; j++)
+        {
+            if(checkCircleRectangleCollision(enemiesArray[i], player.bullets[j]))
+            {
+                player.bullets.splice(j, 1);
+                enemiesArray[i].health -= player.damage;
+            }
+        }
+    }
 
     requestAnimationFrame(animate);
 }   
