@@ -21,7 +21,6 @@ function animate()
         }
     }
 
-    player.update();
     for (let i = 0; i < enemiesArray.length; i++)
     {
         enemiesArray[i].update();
@@ -38,6 +37,7 @@ function animate()
             }
         }
     }
+    player.update();
 
     requestAnimationFrame(animate);
 }   

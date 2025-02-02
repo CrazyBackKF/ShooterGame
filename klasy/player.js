@@ -44,6 +44,7 @@ class Player {
         this.changeWeapon();
         this.moveHorizontally()
         this.moveVertically();
+        //this.checkCollisions();
         this.physics();
     }
 
@@ -162,6 +163,29 @@ class Player {
             angle: this.angle
         }));
         this.lastShot = Date.now();
+    }
+
+    checkCollisions()
+    {
+        for (let i = 0; i < enemiesArray.length; i++)
+        {
+            const enemy = enemiesArray[i]
+            if(checkCircleCollision(this, enemy))
+            {
+                if(this.velocity.x < 0)
+                {
+                    this.position.x = enemy.position.x + enemy.radius + player.radius + 0.01;
+                    this.velocity.x = 0;
+                }
+                if(this.velocity.x > 0)
+                {
+                    this.position.x = enemy.position.x - enemy.radius - player.radius - 0.01;
+                    this.velocity.x = 0;
+                }
+                break;
+            }
+        }
+            
     }
     
 }
